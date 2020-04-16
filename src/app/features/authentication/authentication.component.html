@@ -1,0 +1,11 @@
+<h2>Authentication</h2>
+
+<!-- Authentication guard & service demo -->
+<div>
+  <input id="authenticated" type="checkbox" [ngModel]="authenticated" (ngModelChange)="authenticationChanged($event)">
+  <label for="authenticated">{{ authenticated ? "Authenticated" : "Anonymous" }}</label>
+</div>
+
+<div>
+  <a routerLink="/authentication/protected">Protected component</a>
+</div>
