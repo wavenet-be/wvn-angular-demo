@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "@wavenet/ngx-wvn-core";
+import {AuthenticationService} from '@wavenet/ngx-wvn-core';
 
 @Component({
   selector: 'app-authentication',
@@ -14,7 +14,8 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authenticationService.redirectUrl = "/authentication/login";
+    this.authenticationService.loginRedirectUrl = "/authentication/login";
+    this.authenticationService.forbiddenRedirectUrl = "/authentication/forbidden";
     this.authenticationService.user.subscribe(user => {
       this.authenticated = user != null;
     });
@@ -23,10 +24,11 @@ export class AuthenticationComponent implements OnInit {
   authenticationChanged(authentication: boolean) {
     if (authentication) {
       this.authenticationService.user.next({
+        userId: 'test',
         roles: ['TEST_ROLE']
       });
     } else {
-      this.authenticationService.user.next(null);
+      this.authenticationService.clear();
     }
   }
 }

@@ -5,7 +5,7 @@ import {AuthenticationModule} from "./features/authentication/authentication.mod
 const routes: Routes = [
   {
     path: 'authentication',
-    loadChildren: './features/authentication/authentication.module#AuthenticationModule',
+    loadChildren: () => import('./features/authentication/authentication.module').then(m => m.AuthenticationModule)
   }
 ]
 
