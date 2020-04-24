@@ -8,7 +8,10 @@ import {LoginComponent} from "./login/login.component";
 const routes: Routes = [
   {
     path: '',
-    component: AuthenticationComponent
+    component: AuthenticationComponent,
+    data: {
+      title: 'Authentication'
+    }
   },
   {
     path: 'protected',
@@ -16,12 +19,16 @@ const routes: Routes = [
     canLoad: [AuthenticationGuard],
     canActivate: [AuthenticationGuard],
     data: {
+      title: 'Protected page',
       roles: ['TEST_ROLE']
     }
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data: {
+      title: 'Login page'
+    }
   }
 ];
 
